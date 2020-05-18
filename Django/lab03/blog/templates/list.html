@@ -1,0 +1,15 @@
+<h1>blog project</h1>
+<!-- 객체를 떨어트려서 하나씩 나열해야 하는데 얘는 변수 하나에 넣어 보냄 -->
+<!-- 객체를 str화 했기 때문에 제목으로만 뜬다.-->
+<!-- <br> {{blogs}} -->
+<hr>
+
+<!-- 낱개로 하려면 for문을 통해 리스트, 딕셔너리를 하나씩 순회해야. -->
+<!-- blog.id를 파라미터로 넘겨줌 -->
+
+<a href="{%url 'new'%}" style="text-decoration: none;">새 글 작성하기</a> {% for blog in blogs %}
+<a href="{%url 'detail' blog.id %}" style="text-decoration: none;">
+    <hr>{{blog.title}}
+    <br> {{blog.date}}
+    <br> {{blog.text}}{% endfor %}
+    </a

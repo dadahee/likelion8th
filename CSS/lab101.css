@@ -1,0 +1,36 @@
+<style>
+/* 태그 선택자 */
+div {
+    border-style: solid;
+}
+
+/* 클래스 선택자*/
+.important {
+    font-size: 1.5em;
+}
+
+.auto {
+    color: coral;
+}
+
+/* 아이디 선택자 */
+#shortcut-title {
+    font-size: large;
+    font-family: "돋움";
+}
+
+/* 다중 선택자 -> 태그 사이를 ,로 구분 */
+h3, h5 {
+    text-align: center;
+    font-size: xx-large;
+}
+
+/* 자식 선택자 -> 띄어쓰기 또는 ">" 로 구분 */
+
+
+/* 구체적인 선택자 -> 구체적으로 선택 */
+h3.highlight {
+    color: blue;
+}
+
+</style>

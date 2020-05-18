@@ -1,0 +1,22 @@
+body {
+    font-family: 나눔고딕;
+    background-color: forestgreen;
+    color: white;
+    text-align: center;
+}
+
+.frame {
+    text-decoration: none;
+}
+
+.head {
+    color: black;
+}
+
+.contents {
+    font-size: 1.2rem;
+    background-color: white;
+    color: black;
+    width: 70%;
+    padding: 2rem;
+}

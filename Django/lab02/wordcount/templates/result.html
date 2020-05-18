@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Word Counter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 나눔고딕;
+            background-color: skyblue;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        hr {
+            border-color: white;
+            background-color: white;
+            border: 0px;
+            height: 0.1rem;
+        }
+        
+        .wrapper {
+            margin: 3rem;
+        }
+        
+        .link {
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-decoration: None;
+            color: palevioletred;
+            background-color: white;
+        }
+        
+        .link:hover {
+            color: white;
+            text-decoration: None;
+            background-color: palevioletred;
+        }
+        
+        .frame {
+            width: 80%;
+            padding: 2rem 0 0.5rem;
+            margin: 2rem auto;
+            background-color: lightgoldenrodyellow;
+            border-radius: 20px;
+        }
+        
+        .head {
+            color: black;
+            font-size: 1.5rem;
+        }
+        
+        .contents {
+            font-size: 1.2rem;
+            background-color: white;
+            border-radius: 20px;
+            color: black;
+            margin: 2rem;
+            padding: 2rem;
+        }
+        
+        .highlight {
+            color: blueviolet;
+        }
+        
+        #title {
+            color: blueviolet;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="contents">
+            <h1 class="head" id="title">단어 카운트 결과</h1>
+            <a href="{%url 'home' %}" class="link">처음으로</a>
+            <!-- 여기서 'home'은 home path 만들 때 세 번째 인자, name의 home이다 -->
+            <h2 class="head">입력한 문장의 총 단어 수는 <span class="highlight">{{ total }}</span>입니다.</h2>
+            <div class="frame">
+                <h3 class="head">입력한 문장</h3>
+                <div class="contents">
+                    <details>
+                        <summary>내용 전체 보기</summary>
+                        <br> {{ text }}
+                    </details>
+                </div>
+            </div>
+            <div class="frame">
+                <h3 class="head">단어 목록</h3>
+                <div class="contents">
+                    {% for word, cnt in word_cnt %} {{ word }} : {{ cnt }}번 <br> {% endfor %}
+                    <!-- endfor를 꼭 써주어야 에러가 안 난다. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
