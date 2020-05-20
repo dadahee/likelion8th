@@ -64,7 +64,7 @@
     > **makemigrations** : models에 적용한 변화를 기반으로 새로운 migrations 생성   
     > **sqlmigrate** : migration을 위한 SQL statements를 보여준다.  
     > **showmigrations** : project의 migrations list와 그들의 상태(체크박스)를 보여준다.  
-
+    #
 * **그래서 언제 쓰는데**  
   **models.py에서 class의 필드를 만들거나 수정할 때마다** db에게 해당 변경 내용을 알려주어야(migration) 한다.
 
@@ -89,8 +89,8 @@
 
     #
 * 슈퍼유저 계정 생성 및 admin 파일 수정 후 로컬주소/admin 통해 나의 노고를 확인할 수 있다.
-* 객체 add 시 가시적으로 확인할 수 있는 필드는 내가 클래스에서 정의한 필드.
-* 좀더 예쁜 객체 구경을 원한다면 객체를 문자열로 반환하는 메소드(str, 클래스 정의 시 자동 생성)를 오버라이딩하여 사용할 것.  
+  * 객체 add 시 가시적으로 확인할 수 있는 필드는 내가 클래스에서 정의한 필드.
+  * 좀더 예쁜 객체 구경을 원한다면 객체를 문자열로 반환하는 메소드(str, 클래스 정의 시 자동 생성)를 오버라이딩하여 사용할 것.  
   
     ```
     from django.db import models

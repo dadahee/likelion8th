@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'BlogApp',
 ]
 
 MIDDLEWARE = [
@@ -117,4 +118,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' #static 파일을 불러올 때의 url
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'BlogApp', 'static') ] #static 파일이 있는 경로 작성
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') #static 파일을 한 곳에 모을 때, 모아줄 위치
+# 앱이 여러 개일 때 static 파일을 모아줄 필요가 생김.
+# python manage.py collectstatic
+# 폰트, 자바스크립트 파일 등.
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #media 파일을 저장되는 위치
+MEDIA_URL = '/media/' # 미디어 파일 요청 받을 url 주소
+# media는 모아줄 필요 x -> 명령어 작성 필요 x
