@@ -16,7 +16,6 @@ def new(request):
     if request.method == "POST":
         form = TodoForm(request.POST)
         if form.is_valid():
-            #이건 안 되나?
             form.save()
             return redirect('main:show')
     else:
