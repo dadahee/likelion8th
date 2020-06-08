@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>북마크 과제 응용 : Daily To do</title>
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="container">
+        <div class="header">
+            <div class="h1 main-title">TO DO</div>
+            <hr>
+            <a href="{% url 'main:new' %}" class="btn btn-lg btn-primary">CREATE</a>
+        </div>
+
+
+        <!-- 북마크 리스트 영역-->
+        <div>
+            <div role="todo_list">
+                {% if posts %}
+                    {% for todo in posts %}
+                    <div role="todo">
+                        <p class="date h5">{{ todo.date | date:"Y/m/d l" }}에 할 일</p>
+                        <p class="title h4">{{ todo.title }}</p>
+                        <pre class="text div" >{{ todo.text }}</pre>
+                        <div>
+                            <a href="{% url 'main:edit' todo.id %}" class="h5 pr-3 btn btn-outline-primary">EDIT</a>
+                            <a href="{% url 'main:delete' todo.id %}" class="h5 btn btn-outline-primary">DELETE</a>
+                        </div>
+                        <hr>
+                    </div>
+                    {% endfor %}
+
+                    <!-- 페이지 표시 구현 -->
+                    <div role="pagintaion" class="text-center">
+                    {% if posts.has_previous %}
+                        <a href="?page={{ posts.previous_page_page_number }}">◀</a>
+                    {% endif %}
+                    <span>{{ posts.number }} </span>
+                    <span> / </span>
+                    <span>{{ posts.paginator.num_pages }}</span>
+                    {% if posts.has_next %}
+                        <a href="?page={{ posts.next_page_number }}">▶</a>
+                    {% endif %}
+                    </div> 
+                {% else %}
+                    <div class="text-center">
+                        <div class="h2 pt-5">To do list does not exist.</h2>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

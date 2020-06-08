@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>New To do</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="wrapper">
+    <div class="container">
+        <div class="header">
+            <div class="main-title h1">
+                새로운 할 일
+            </div>
+            <a href="{% url 'main:show' %}" class="h3 underline a">HOME</a>
+        </div>
+        <hr>
+        <div class="form-wrapper">
+            <form method="POST" enctype="multipart/form-data" class="text-center">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">날짜</span>
+                    </div>
+                    <input type="date" name="date" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">제목</span>
+                    </div>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">내용</span>
+                    </div>
+                    <textarea name="text" rows="9" class="form-control textarea"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">작성하기</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock  %}
