@@ -4,11 +4,15 @@
 ## 6주차 내용 요약
 1. [(이전에 배운 내용) 기본 CRUD + 모델 구조 구현하기](#기본-CRUD-구현-및-모델-구조)
 2. [템플릿 상속, 설정하여 base 템플릿 불러오기](#템플릿-상속받기)
-3. [리스트 페이지에 페이지네이션 기능 추가](#페이지네이션)
+3. [리스트 페이지에 페이지네이션 기능 추가](#페이지네이션)  
+</br>
 
 * * *
 
-### **기본 CRUD 구현 및 모델 구조**
+## **실습 내용**
+</BR>
+
+#### **기본 CRUD 구현 및 모델 구조**
    - settings.py : 앱 추가, static 폴더 생성.
    - 프로젝트 / urls.py : include 해주기
    - 앱 / urls.py : 각 페이지와 views.py의 함수 연결, 이름 지정
@@ -19,7 +23,7 @@
      - new, edit 함수에서 method 방식에 따라 다르게 리턴해주기!
      - 이번 실습에서는 {{ form.as_p }} 등으로 한 번에 구현하지 않고 각 필드별로 뜯어서 인자를 받아 사용했다.
 * * *
-### **템플릿 상속받기**
+#### **템플릿 상속받기**
    - 템플릿 프레임(6주차 실습에서는 base.html) 파일 생성
    - 기본 템플릿(base.html)
         ``` html5
@@ -33,7 +37,7 @@
       - block 위아래로 뼈대 내용을 작성해준다.
       - block 내부는 상속받을 페이지에서 작성.
    - 상속받을 페이지(new.html, show.html, edit.html)
-        ``` html
+        ``` html5
         {% extends 'base.html' %}
         {% block header %}
         대충 헤더에 들어갈 내용
@@ -45,7 +49,7 @@
         ```
         맨위에 상속 템플릿 지정, block 내부에 컨텐츠 작성하기.
 * * * 
-### **페이지네이션**
+#### **페이지네이션**
    - 그냥 예쁘게 보여주는 것뿐이라, views.py에서 show 메소드와 페이지 일부만 수정해주면 됨.
    - views.py
      - import 부터
@@ -81,9 +85,10 @@
 </BR>
 
 * * *
-## 새롭게 알게된 내용, 추가한 내용
+## **배운 내용**
+</BR>
 
-### CRUD 구현 + 모델 구조
+### **추가한 내용 : CRUD 구현 + 모델 구조**
    1. models.py (forms.py 아님에 주의) : verbose_name은 new.html이나 edit.html에서 input field 앞 레이블로 사용된다.
       ``` python
       class Todo(models.Model):
@@ -113,13 +118,26 @@
             ``` python
             date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS, help_text="Formats: YYYY-MM-DD", required=True)
             ```
+            help_text 인자 : 입력칸 옆에 노출되는 문자열, model 대부분의 field들에 사용할 수 있다.
         * settings.py 에 포맷 변수 추가
             ``` python
             DATE_INPUT_FORMATS = ['%Y-%m-%d']
             ```
       * 출력 예쁘게 하기
         * ```{{ todo.date | date:"Y/m/d l" }}```
-        * 템플릿 페이지 내에서 파이프라인을 통해 포맷 지정
-   5. [템플릿](#템플릿-상속받기)
-   6. [페이지네이션](#페이지네이션)  
+        * 템플릿 페이지 내에서 파이프라인을 통해 포맷 지정  
+</br>
+
+* * *
+### **새롭게 알게된 내용**
+   1. [템플릿](#템플릿-상속받기)
+   2. [페이지네이션](#페이지네이션)  
     귀찮아서 링크 다는 거 아님... 아마도...
+
+* * *
+## 스크린샷
+
+![show.html](https://github.com/dadahee/likelion8th/blob/master/Django/lab06/screenshots/todo_show.html.png)   
+![show.html_empty](https://github.com/dadahee/likelion8th/blob/master/Django/lab06/screenshots/todo_show_empty.png)  
+![edit.html](https://github.com/dadahee/likelion8th/blob/master/Django/lab06/screenshots/todo_edit.html.png)   
+![new.html](https://github.com/dadahee/likelion8th/blob/master/Django/lab06/screenshots/todo_new.html.png)   
